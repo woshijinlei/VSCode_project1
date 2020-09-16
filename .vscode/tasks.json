@@ -1,33 +1,25 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"type": "shell",
-			"label": "C/C++: clang++ build active file",
-			//"clang++" is the driver that causes the Clang compiler to expect C++ code and link against the C++ standard library
-			//驱动程序
-			"command": "/usr/bin/clang++",
-			"args": [
-				"-std=c++11",
-				"-stdlib=libc++",
-				"-g",
-				//compile the active file
-				"${file}",
-				//create an output file
-				"-o",
-				// the current directory with the same name as the active file
-				"${fileDirname}/${fileBasenameNoExtension}"
-			],
-			"options": {
-				"cwd": "${workspaceFolder}"
-			},
-			"problemMatcher": [
-				"$gcc"
-			],
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			}
-		}
-	]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "clang++ build active file",
+            "type": "shell",
+            "command": "/usr/bin/clang++",
+            "args": [
+                "-std=c++17",
+                "-stdlib=libc++",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
+        }
+    ],
 }
