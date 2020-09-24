@@ -1,0 +1,22 @@
+iostrea是一个C++标准的头文件
+
+_LIBCPP_BEGIN_NAMESPACE_STD
+
+_LIBCPP_TYPE_VIS    define _LIBCPP_TYPE_VIS __attribute__ ((__visibility__("default")))
+
+每种类型操作符的重载：
+    basic_istream& operator>>(bool& __n);
+    basic_istream& operator>>(short& __n);
+    basic_istream& operator>>(unsigned short& __n);
+    basic_istream& operator>>(int& __n);
+    basic_istream& operator>>(unsigned int& __n);
+    basic_istream& operator>>(long& __n);
+    basic_istream& operator>>(unsigned long& __n);
+    basic_istream& operator>>(long long& __n);
+    basic_istream& operator>>(unsigned long long& __n);
+    basic_istream& operator>>(float& __f);
+    basic_istream& operator>>(double& __f);
+    basic_istream& operator>>(long double& __f);
+    basic_istream& operator>>(void*& __p);
+
+如何输出字符串的地址
