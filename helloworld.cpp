@@ -1,8 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <fstream>
-#include "StringBad.h"
+#include <fstream> 
 using namespace std;
 
 const int SLEW = 10;
@@ -190,11 +189,11 @@ void testget()
 {
     //分配动态内存
     char *input = new char;
-    cout << "enter a line" << endl;//输入：12345分析
+    cout << "enter a line" << endl; //输入：12345分析
     //分隔符\n
     cin.get(input, 5);
-    cout << input << endl;//这个地方添加的endl会影响换行的判断
-    if (cin.get() == '\n')//这个地方得注意，会消耗掉队列中换行符
+    cout << input << endl; //这个地方添加的endl会影响换行的判断
+    if (cin.get() == '\n') //这个地方得注意，会消耗掉队列中换行符
     {
         cout << "last char is 换行符" << endl;
     }
@@ -626,8 +625,9 @@ void showCstring();
 void showString();
 void showAutoPointer();
 void showSTL();
-using namespace jinlei;
-using jinlei::__showSomeClass; 
+void __showSomeClass();
+void showIterator();
+void showList();
 int main(int argc, char *argv[])
 {
     cout << "argc: " << argc << endl;
@@ -666,7 +666,7 @@ int main(int argc, char *argv[])
     {
         // showRandomFile();
     }
-    __showSomeClass(0);
+    showList();
     return 0;
     vector<string> msg{"hello", "C++"};
     int length = msg.size();
