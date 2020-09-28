@@ -365,10 +365,48 @@ void showListMer()
         cout << w.getStr() << endl;
     }
 }
-
+// StringBad created(char): 0x7ffee1eda248 threadID: 0x1131165c0
+// StringBad created(char): 0x7ffee1eda258 threadID: 0x1131165c0
+// StringBad created(copy): 0x7faeeec00650 threadID: 0x1131165c0
+// StringBad created(copy): 0x7faeeec02a70 threadID: 0x1131165c0
+// StringBad deleted: 0x7ffee1eda258 threadID: 0x1131165c0
+// 3 objects left
+// StringBad deleted: 0x7ffee1eda248 threadID: 0x1131165c0
+// 2 objects left
+// StringBad created(char): 0x7ffee1eda1f0 threadID: 0x1131165c0
+// StringBad created(&&): 0x7faeeec02aa0 threadID: 0x1131165c0
+// StringBad deleted: 0x7ffee1eda1f0 threadID: 0x1131165c0
+// 3 objects left
+// StringBad created(char): 0x7ffee1eda1f0 threadID: 0x1131165c0
+// StringBad created(&&): 0x7faeeec02ac0 threadID: 0x1131165c0
+// StringBad deleted: 0x7ffee1eda1f0 threadID: 0x1131165c0
+// 4 objects left
+// jinle
+// jinle
+// jinle
+// jinle
+// StringBad deleted: 0x7faeeec00650 threadID: 0x1131165c0
+// 3 objects left
+// StringBad deleted: 0x7faeeec02a70 threadID: 0x1131165c0
+// 2 objects left
+// StringBad deleted: 0x7faeeec02aa0 threadID: 0x1131165c0
+// 1 objects left
+// StringBad deleted: 0x7faeeec02ac0 threadID: 0x1131165c0
+// 0 objects left
+void showListPushback()
+{
+    list<StringBad> whats{StringBad("jinlei"), StringBad("jinlei")};
+    for (size_t i = 0; i < 2; i++)
+    {
+        whats.push_back(StringBad("jinlei"));
+    }
+    for (auto &&i : whats)
+    {
+        cout << i.getStr() << endl;
+    }
+    whats.clear();
+}
 void __showSomeClass()
 {
-    {
-        showListMer();
-    }
+    showListPushback();
 }

@@ -6,6 +6,7 @@ class StringBad
 private:
     char *str; //定义的是一个指针，表面类申明没有为字符串本身分配存储空间，而是通过构造函数new，动态的申请内存
     int len;
+    int change = 0;
     static int num_strings; //静态存储类型，静态类成员
 public:
     static const int Months = 12;
@@ -17,12 +18,14 @@ public:
     void show(StringBad &s);       //lvalue
     void show(const StringBad &s); //const lvalue or rlvaue
     void show(StringBad &&s);      //rvalue
+    void changeNumber(int what) { change = what; };
     int getLength() const { return strlen(str); };
     char *getStr() const { return str; };
     StringBad &operator=(const StringBad &s);
     StringBad &operator=(char *c);
     StringBad &operator=(StringBad &&s);
-    // bool operator<(const StringBad &s2);
+    bool operator<(const StringBad &s2);
+    // bool operator()(const StringBad &a, const StringBad &b);
     char &operator[](int i);
     friend std::ostream &operator<<(std::ostream &os, const StringBad &st);
     static int howMany();

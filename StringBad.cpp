@@ -1,10 +1,13 @@
 #include <iostream>
 #include "StringBad.h"
+#include <thread>
 //类定义描述类如何分配内存，但你并没有分配内存
 using namespace std;
 int StringBad::num_strings = 0;
+
 // bool StringBad::operator<(const StringBad &s2)
 // {
+//      cout << "StringBad operator< inner" << endl;
 //     if (this->len < s2.len)
 //     {
 //         return true;
@@ -15,9 +18,22 @@ int StringBad::num_strings = 0;
 //     }
 // }
 
-bool operator<(StringBad &s1, StringBad &s2)
+// bool StringBad::operator()(const StringBad &s1, const StringBad &s2)
+// {
+//     cout << "StringBad operator()" << endl;
+//     if (s1.getLength() < s2.getLength())
+//     {
+//         return true;
+//     }
+//     else
+//     {
+//         return false;
+//     }
+// }
+
+bool operator<(const StringBad &s1, const StringBad &s2)
 {
-    cout << "StringBad operator<" << endl;
+    cout << "StringBad operator< outer" << endl;
     if (s1.getLength() < s2.getLength())
     {
         return true;
@@ -27,6 +43,7 @@ bool operator<(StringBad &s1, StringBad &s2)
         return false;
     }
 }
+
 int StringBad::howMany()
 {
     return num_strings;
@@ -49,7 +66,7 @@ StringBad::StringBad(const char *m_tr)
     str = new char[len + 1];
     strlcpy(str, m_tr, len);
     num_strings++;
-    cout << "StringBad created(char): " << num_strings << endl;
+    cout << "StringBad created(char): " << this << " threadID: " << std::this_thread::get_id() << endl;
 }
 
 StringBad::StringBad()
@@ -57,7 +74,7 @@ StringBad::StringBad()
     str = new char[1];
     str[0] = '\0';
     num_strings++;
-    cout << "StringBad created(default): " << num_strings << endl;
+    cout << "StringBad created(default): " << this << " threadID: " << std::this_thread::get_id() << endl;
 }
 
 StringBad::StringBad(const StringBad &sb)
@@ -66,7 +83,8 @@ StringBad::StringBad(const StringBad &sb)
     len = sb.len; //steal address
     str = new char[len + 1];
     strcpy(str, sb.str);
-    cout << "StringBad created(copy): " << num_strings << endl;
+
+    cout << "StringBad created(copy): " << this << " threadID: " << std::this_thread::get_id() << endl;
 }
 StringBad::StringBad(StringBad &&sb)
 {
@@ -75,11 +93,12 @@ StringBad::StringBad(StringBad &&sb)
     sb.str = nullptr;
     sb.len = 0;
     num_strings++;
-    cout << "StringBad created(&&): " << num_strings << endl;
+    cout << "StringBad created(&&): " << this << " threadID: " << std::this_thread::get_id() << endl;
 }
 StringBad &StringBad::operator=(const StringBad &s)
 {
-    cout << "StringBad operator=" << endl;
+    cout << "StringBad operator=: " << this
+         << " threadID: " << std::this_thread::get_id() << endl;
     if (this == &s)
     {
         return *this;
@@ -92,7 +111,8 @@ StringBad &StringBad::operator=(const StringBad &s)
 }
 StringBad &StringBad::operator=(StringBad &&s)
 {
-    cout << "StringBad operator=(&&)" << endl;
+    cout << "StringBad operator=(&&): " << this
+         << " threadID: " << std::this_thread::get_id() << endl;
     if (this == &s)
     {
         return *this;
@@ -113,7 +133,8 @@ char &StringBad::operator[](int i)
 
 StringBad::~StringBad()
 {
-    cout << "StringBad deleted" << endl;
+    cout << "StringBad deleted: " << this
+         << " threadID: " << std::this_thread::get_id() << endl;
     --num_strings;
     cout << num_strings << " objects left\n";
     delete[] str;

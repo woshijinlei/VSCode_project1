@@ -170,10 +170,11 @@ void showListUnique()
 // 1
 // 3
 // 2
-void showListSlice(){
-     list<int> origin{1};
-    list<int> l{ 3, 2};
-    l.splice(l.cbegin(),origin);
+void showListSlice()
+{
+    list<int> origin{1};
+    list<int> l{3, 2};
+    l.splice(l.cbegin(), origin);
     showSequences(origin);
     showSequences(l);
 }
@@ -181,10 +182,5 @@ void showListSlice(){
 //list在任何位置插入和删除的一件都会固定的
 //vector强调的快速随机访问
 void showList()
-{
-    list<int> origin{1};
-    list<int> l{ 3, 2};
-    l.splice(l.cbegin(),origin);
-    showSequences(origin);
-    showSequences(l);
+{  
 }

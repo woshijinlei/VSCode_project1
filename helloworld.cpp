@@ -628,6 +628,11 @@ void showSTL();
 void __showSomeClass();
 void showIterator();
 void showList();
+void showSet();
+void showMap();
+void showTemplateClass();
+void showThread();
+void showThreadData();
 int main(int argc, char *argv[])
 {
     cout << "argc: " << argc << endl;
@@ -666,7 +671,7 @@ int main(int argc, char *argv[])
     {
         // showRandomFile();
     }
-    showList();
+    showThreadData();
     return 0;
     vector<string> msg{"hello", "C++"};
     int length = msg.size();

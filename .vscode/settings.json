@@ -77,7 +77,11 @@
         "memory_resource": "cpp",
         "list": "cpp",
         "valarray": "cpp",
-        "function": "cpp"
+        "function": "cpp",
+        "set": "cpp",
+        "__tree": "cpp",
+        "map": "cpp",
+        "thread": "cpp"
     },
     "code-runner.runInTerminal": true,
     "code-runner.clearPreviousOutput": true,
